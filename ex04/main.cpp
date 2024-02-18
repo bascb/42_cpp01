@@ -1,0 +1,65 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bcastelo <bcastelo@student.42lisboa.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/17 11:34:42 by bcastelo          #+#    #+#             */
+/*   Updated: 2024/02/18 12:39:51 by bcastelo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <iostream>
+#include <fstream>
+#include <string>
+
+void	replace(std::ifstream& fin, std::ofstream& fout, std::string s1, std::string s2);
+
+int	main(int argc, char **argv)
+{
+	std::ifstream	fin;
+	std::ofstream	fout;
+	std::string		s1;
+	std::string		s2;
+
+	if (argc != 4)
+	{
+		std::cout << "Usage: " << argv[0] << " <filename> <string to be replaced> <substitute string>" << std::endl;
+		return 0;
+	}
+	fin.open(argv[1], std::ifstream::in);
+	if (!fin.is_open())
+	{
+    	std::cerr << "Error opening file " << argv[1] << std::endl;
+    	return (1);
+    }
+	std::string out_filename = argv[1];
+	out_filename += ".replace";
+	fout.open(out_filename.c_str(), std::ofstream::out);
+	if (!fout.is_open())
+	{
+    	std::cerr << "Error opening file " << out_filename << std::endl;
+		fin.close();
+    	return (1);
+    }
+	s1 = argv[2];
+	s2 = argv[3];
+	replace(fin, fout, s1, s2);
+	fin.close();
+	fout.close();
+	return (0);
+}
+
+void	replace(std::ifstream& fin, std::ofstream& fout, std::string s1, std::string s2)
+{
+	std::size_t found_pos = 0;
+	std::size_t s1_len = s1.size();
+	std::string text((std::istreambuf_iterator<char>(fin)), std::istreambuf_iterator<char>());
+	while ((found_pos = text.find(s1, found_pos)) != std::string::npos)
+	{
+		text.erase(found_pos, s1_len);
+		text.insert(found_pos, s2);
+	}
+	fout << text;
+}
