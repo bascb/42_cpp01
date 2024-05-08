@@ -6,7 +6,7 @@
 /*   By: bcastelo <bcastelo@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 19:17:28 by bcastelo          #+#    #+#             */
-/*   Updated: 2024/02/20 22:00:44 by bcastelo         ###   ########.fr       */
+/*   Updated: 2024/05/08 19:41:11 by bcastelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,5 @@ void	Harl::error( void )
 
 void	Harl::unknown( void )
 {
-	std::cout << "Unknown log type!" << std::endl;
+	std::cout << "Irrelevant complaint." << std::endl;
 }
