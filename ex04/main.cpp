@@ -6,7 +6,7 @@
 /*   By: bcastelo <bcastelo@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 11:34:42 by bcastelo          #+#    #+#             */
-/*   Updated: 2024/05/11 14:35:35 by bcastelo         ###   ########.fr       */
+/*   Updated: 2024/05/11 14:42:21 by bcastelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(int argc, char **argv)
 	}
 	s1 = argv[2];
 	s2 = argv[3];
-	if (!s1.size())
+	if (s1.empty())
 	{
 		std::cout << "String to be replaced cannot be empty!" << std::endl;
 		return (1);
