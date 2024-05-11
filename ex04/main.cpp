@@ -6,7 +6,7 @@
 /*   By: bcastelo <bcastelo@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 11:34:42 by bcastelo          #+#    #+#             */
-/*   Updated: 2024/05/11 12:54:30 by bcastelo         ###   ########.fr       */
+/*   Updated: 2024/05/11 14:35:35 by bcastelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,13 @@ int	main(int argc, char **argv)
 		std::cout << "Usage: " << argv[0] << " <filename> <string to be replaced> <substitute string>" << std::endl;
 		return 0;
 	}
+	s1 = argv[2];
+	s2 = argv[3];
+	if (!s1.size())
+	{
+		std::cout << "String to be replaced cannot be empty!" << std::endl;
+		return (1);
+	}
 	fin.open(argv[1], std::ifstream::in);
 	if (!fin.is_open())
 	{
@@ -43,8 +50,6 @@ int	main(int argc, char **argv)
 		fin.close();
     	return (1);
     }
-	s1 = argv[2];
-	s2 = argv[3];
 	replace(fin, fout, s1, s2);
 	fin.close();
 	fout.close();
