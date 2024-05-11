@@ -6,7 +6,7 @@
 /*   By: bcastelo <bcastelo@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 11:34:42 by bcastelo          #+#    #+#             */
-/*   Updated: 2024/02/18 12:39:51 by bcastelo         ###   ########.fr       */
+/*   Updated: 2024/05/11 12:54:30 by bcastelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,13 @@ void	replace(std::ifstream& fin, std::ofstream& fout, std::string s1, std::strin
 {
 	std::size_t found_pos = 0;
 	std::size_t s1_len = s1.size();
+	std::size_t s2_len = s2.size();
 	std::string text((std::istreambuf_iterator<char>(fin)), std::istreambuf_iterator<char>());
 	while ((found_pos = text.find(s1, found_pos)) != std::string::npos)
 	{
 		text.erase(found_pos, s1_len);
 		text.insert(found_pos, s2);
+		found_pos += s2_len;
 	}
 	fout << text;
 }
